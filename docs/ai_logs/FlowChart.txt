@@ -1,0 +1,81 @@
+Vấn đề:Vẽ FlowChart
+Prompt: draw the flowchart on figma
+Code AI:
+FLOWCHART: ORDER PROCESSING (based on legacy_orders)
+[ User Places Order ]
+          →
+[ Receive Order Request ]
+          →
+[ Validate Order Data ]
+          →
+[ Check Product Stock ]
+          →
+[ Stock Available ? ]
+        /                 \
+     No                     Yes
+      ↓                       ↓
+[ Reject Order ]      [ Begin Transaction ]
+                            →
+                     [ Deduct Stock ]
+                            →
+                     [ Calculate Total Price ]
+                            →
+                     [ Apply Voucher / Discount ]
+                            →
+                     [ Create Order Record ]
+                            →
+                     [ Create Order Items ]
+                            →
+                     [ Update Order Status = CREATED ]
+                            →
+                     [ Commit Transaction ]
+                            →
+                     [ Order Success ]
+
+🔷 FLOWCHART: ORDER STATUS LIFE CYCLE (rất hay được hỏi)
+[ CREATED ]
+     →
+[ PAID ]
+     →
+[ PACKING ]
+     →
+[ SHIPPING ]
+     →
+[ COMPLETED ]
+
+Nhánh lỗi (từ file legacy thường có):
+[ CREATED ]
+     →
+[ CANCELLED ]
+
+🔷 FLOWCHART: FLASH SALE / HIGH LOAD (gắn với dữ liệu nhiều dòng)
+[ Multiple Order Requests ]
+             →
+[ Orders Arrive at Same Time ]
+             →
+[ Server Handles Concurrent Requests ]
+             →
+[ Transaction per Order ]
+             →
+[ Atomic Stock Update ]
+             →
+[ Success or SOLD OUT ]
+
+🔷 FLOWCHART: DATA FLOW (mapping với CSV)
+[ Order CSV Row ]
+        →
+[ order_id ]
+        →
+[ user_id ]
+        →
+[ product_variant_id ]
+        →
+[ quantity ]
+        →
+[ order_status ]
+        →
+[ created_at ].
+.
+.
+
+.
