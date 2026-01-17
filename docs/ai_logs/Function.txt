@@ -1,0 +1,122 @@
+tell me the function of the project like what feature does it has what can it do
+
+Below is a clear, defense-ready explanation of what your E-Commerce Simulation project does and what features it has, written in a way you can say to the lecturer or put in your README / report.
+
+1. Project Overview (What is this system?)
+
+This project is a Web-based E-Commerce Simulation System modeled after Shopee/Lazada.
+
+It simulates:
+
+How an online marketplace manages products, orders, vouchers, and inventory
+
+How the system handles thousands of concurrent requests (flash sale)
+
+How legacy business data (CSV) is migrated into a modern database
+
+How managers monitor business activity via dashboards
+
+The system is built using Java Web (Servlet/JSP) running on Apache Tomcat, with a local MySQL database.
+
+2. Main Functional Modules (Features)
+2.1 User Management
+
+What it does
+
+Register users
+
+Login / Logout
+
+Store customer profile & contact info
+
+Why it matters
+
+Every order must belong to a valid user
+
+Required for order history and reports
+
+Database
+
+users table
+
+orders.user_id → FK → users.user_id
+
+2.2 Shop & Product Management
+
+What it does
+
+Each shop can create products
+
+Products can have multiple variants (size, color)
+
+Each variant has its own stock
+
+Why it matters
+
+Matches real Shopee/Lazada structure
+
+Required for inventory conflict logic
+
+Database
+
+shops
+
+products
+
+product_variants (stock is tracked here)
+
+2.3 Order & Cart System
+
+What it does
+
+User places an order
+
+Order contains multiple items (order lines)
+
+Calculates:
+
+Item subtotal
+
+Shipping fee
+
+Voucher discount
+
+Grand total
+
+Why it matters
+
+Core business logic of e-commerce
+
+Demonstrates transactional processing
+
+Database
+
+orders
+
+order_items
+
+2.4 Voucher & Promotion System
+
+What it does
+
+Supports percentage and fixed vouchers
+
+Allows voucher stacking (multiple vouchers per order)
+
+Applies rules:
+
+Minimum spend
+
+Maximum discount cap
+
+Why it matters
+
+Shows complex business logic
+
+One of the hardest real-world e-commerce problems
+
+Database
+
+vouchers
+
+order_vouchers (many-to-many)
