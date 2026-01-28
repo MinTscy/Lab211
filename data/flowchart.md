@@ -68,4 +68,16 @@ subgraph L3["Lane 3 — Validation, Commit & Failures"]
   AG -- No --> AF
 
   AG -- Yes --> AH[Decrement Voucher Quota]
-  AH
+  AH --> AI[Update Inventory]
+  AI --> AJ[Create Order Record]
+  AJ --> AK[COMMIT TRANSACTION]
+  AK --> AL[Order Confirmation]
+
+  AB --> AM[ROLLBACK TRANSACTION]
+  AD --> AM
+  AF --> AM
+  AM --> AN[Order Failure]
+end
+
+%% Optional API return
+Q -.-> AO[Return PRICE CHANGED]
