@@ -2,64 +2,73 @@
 ```mermaid
 flowchart LR
 
+%% =========================
+%% LANE 1 — BROWSING + DISCOUNTS
+%% =========================
+subgraph L1["Lane 1 — Browsing & Discounts"]
+direction LR
+A[Marketplace Entry] --> B[Product Browsing] --> C[Select Product Variant] --> D[Add to Cart] --> E{Continue Shopping?}
+E -- Yes --> B
+E -- No --> F[View Cart]
 
-  A[Marketplace Entry] --> B[Product Browsing]
-  B --> C[Select Product Variant]
-  C --> D[Add to Cart]
-  D --> E{Continue Shopping?}
-  E -- Yes --> B
-  E -- No --> F[View Cart]
+F --> G[Apply Flash Sale Discount] --> H{Flash Sale Eligible?}
+H -- Yes --> I[Apply Shop Voucher]
+H -- No --> I
 
-  F --> G[Apply Flash Sale Discount]
-  G --> H{Flash Sale Eligible?}
-  H -- Yes --> I[Apply Shop Voucher]
-  H -- No --> I
+I --> J{Shop Voucher Eligible?}
+J -- Yes --> K[Apply Platform Voucher]
+J -- No --> K
 
-  I --> J{Shop Voucher Eligible?}
-  J -- Yes --> K[Apply Platform Voucher]
-  J -- No --> K
+K --> L{Platform Voucher Eligible?}
+L -- Yes --> M[Apply Shipping Promotion]
+L -- No --> M
 
-  K --> L{Platform Voucher Eligible?}
-  L -- Yes --> M[Apply Shipping Promotion]
-  L -- No --> M
+M --> N{Shipping Promotion Eligible?}
+N -- Yes --> O[Compute Final Price]
+N -- No --> O
+end
 
-  M --> N{Shipping Promotion Eligible?}
-  N -- Yes --> O[Compute Final Price]
-  N -- No --> O
+%% =========================
+%% LANE 2 — CHECKOUT + IDEMPOTENCY
+%% =========================
+subgraph L2["Lane 2 — Checkout & Idempotency"]
+direction LR
+O --> P[Initiate Checkout] --> Q[Re-Validate Stock & Price] --> R{Price or Stock Changed?}
 
-  O --> P[Initiate Checkout]
-  P --> Q[Re-Validate Stock & Price]
+R -- Yes --> S[Ask User to Confirm Update] --> T{User Confirms?}
+T -- No --> U[Abort Checkout]
+T -- Yes --> V[Proceed to Order Submission]
 
-  Q --> R{Price or Stock Changed?}
-  R -- Yes --> S[Ask User to Confirm Update]
-  S --> T{User Confirms?}
-  T -- No --> U[Abort Checkout]
-  T -- Yes --> V[Proceed to Order Submission]
-  R -- No --> V
+R -- No --> V
 
-  V --> W[BEGIN TRANSACTION]
-  W --> X{Idempotency Used?}
-  X -- Yes --> Y[Return Existing Order Result]
-  X -- No --> Z[Lock Inventory Row]
+V --> W[BEGIN TRANSACTION] --> X{Idempotency Used?}
+X -- Yes --> Y[Return Existing Order Result]
+X -- No --> Z[Lock Inventory Row]
+end
 
-  Z --> AA{Stock Available?}
-  AA -- No --> AB[Return SOLD OUT]
-  AA -- Yes --> AC{Per-User Purchase Limit Reached?}
-  AC -- Yes --> AD[Return PURCHASE LIMIT REACHED]
-  AC -- No --> AE{Voucher Valid?}
-  AE -- No --> AF[Return VOUCHER INVALID]
-  AE -- Yes --> AG{Voucher Quota Available?}
-  AG -- No --> AF
-  AG -- Yes --> AH[Decrement Voucher Quota]
-  AH --> AI[Update Inventory]
+%% =========================
+%% LANE 3 — VALIDATION + COMMIT/FAIL
+%% =========================
+subgraph L3["Lane 3 — Validation, Commit & Failures"]
+direction LR
+Z --> AA{Stock Available?}
+AA -- No --> AB[Return SOLD OUT]
 
-  AI --> AJ[Create Order Record]
-  AJ --> AK[COMMIT TRANSACTION]
-  AK --> AL[Order Confirmation]
+AA -- Yes --> AC{Per-User Purchase Limit Reached?}
+AC -- Yes --> AD[Return PURCHASE LIMIT REACHED]
 
-  AB --> AM[ROLLBACK TRANSACTION]
-  AD --> AM
-  AF --> AM
-  AM --> AN[Order Failure]
+AC -- No --> AE{Voucher Valid?}
+AE -- No --> AF[Return VOUCHER INVALID]
 
-  Q -.-> AO[Return PRICE CHANGED]
+AE -- Yes --> AG{Voucher Quota Available?}
+AG -- No --> AF
+AG -- Yes --> AH[Decrement Voucher Quota] --> AI[Update Inventory]
+AI --> AJ[Create Order Record] --> AK[COMMIT TRANSACTION] --> AL[Order Confirmation]
+
+AB --> AM[ROLLBACK TRANSACTION] --> AN[Order Failure]
+AD --> AM
+AF --> AM
+end
+
+%% Optional: API-style return for price change
+Q -.-> AO[Return PRICE CHANGED]
