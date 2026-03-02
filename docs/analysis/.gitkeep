@@ -1,1 +1,21 @@
-# placeholder
+## Migration Report (CSV → MySQL)
+
+- Database: lab211_db (MySQL)
+- Strategy: Option 1 – Staging tables
+
+### Imported CSV files
+- users.csv → users
+- shops.csv → shops
+- products.csv → products
+- product_variants.csv → product_variants
+- orders.csv → stg_orders_raw
+- order_items.csv → stg_order_items_raw
+
+### Transform
+- stg_orders_raw → orders (STR_TO_DATE for order_date)
+- stg_order_items_raw → order_items (STR_TO_DATE for created_at)
+
+### Result
+- Orders and order items imported successfully
+- Date fields converted to DATETIME
+- Data integrity preserved with foreign keys

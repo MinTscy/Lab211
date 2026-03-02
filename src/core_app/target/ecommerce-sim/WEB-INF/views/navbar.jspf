@@ -1,0 +1,43 @@
+﻿<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>E-Commerce Simulation</title>
+  <link rel="stylesheet" href="${pageContext.request.contextPath}/assets/css/app.css">
+</head>
+<body>
+  <header class="topbar">
+    <div class="topbar-inner">
+      <div class="brand badge">ShopZone</div>
+      <form class="search-bar" method="get" action="${pageContext.request.contextPath}/products">
+        <input type="text" name="q" placeholder="Search products, categories..." value="${param.q}">
+        <button type="submit" class="search-icon">🔍</button>
+      </form>
+      <div class="nav-actions">
+        <a href="${pageContext.request.contextPath}/cart" class="icon-btn">🛒</a>
+        <c:if test="${sessionScope.user != null}">
+          <span class="user">Hi, ${sessionScope.user.name}</span>
+          <a href="${pageContext.request.contextPath}/logout" class="ghost">Logout</a>
+        </c:if>
+        <c:if test="${sessionScope.user == null}">
+          <a href="${pageContext.request.contextPath}/login" class="ghost">Login</a>
+          <a href="${pageContext.request.contextPath}/register" class="cta">Register</a>
+        </c:if>
+      </div>
+    </div>
+    <nav class="category-nav">
+      <a href="${pageContext.request.contextPath}/products?q=phone">Phones</a>
+      <a href="${pageContext.request.contextPath}/products?q=laptop">Laptop</a>
+      <a href="${pageContext.request.contextPath}/products?q=fashion">Fashion</a>
+      <a href="${pageContext.request.contextPath}/products?q=beauty">Beauty</a>
+      <a href="${pageContext.request.contextPath}/products?q=shoes">Shoes</a>
+      <a href="${pageContext.request.contextPath}/products?q=accessory">Accessories</a>
+      <a href="${pageContext.request.contextPath}/products?q=home">Home</a>
+      <a href="${pageContext.request.contextPath}/products?q=sports">Sports</a>
+      <c:if test="${sessionScope.user != null && sessionScope.user.role == 'ADMIN'}">
+        <a href="${pageContext.request.contextPath}/admin/products">Admin</a>
+      </c:if>
+    </nav>
+  </header>
+  <main class="container">

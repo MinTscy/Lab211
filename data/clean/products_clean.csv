@@ -1,0 +1,201 @@
+id,shop_id,name,description,base_price,active
+1,2,Wireless Earbuds,Wireless Earbuds designed for everyday use with reliable quality.,14.75,1
+2,8,Smart Hoodie,Smart Hoodie designed for everyday use with reliable quality.,149.49,1
+3,7,Eco Backpack,Eco Backpack designed for everyday use with reliable quality.,63.24,1
+4,10,Premium Water Bottle,Premium Water Bottle designed for everyday use with reliable quality.,44.85,1
+5,3,Compact Desk Lamp,Compact Desk Lamp designed for everyday use with reliable quality.,196.44,1
+6,5,Ultra Notebook,Ultra Notebook designed for everyday use with reliable quality.,179.14,1
+7,6,Modern Running Shoes,Modern Running Shoes designed for everyday use with reliable quality.,153.07,1
+8,3,Classic Phone Case,Classic Phone Case designed for everyday use with reliable quality.,131.97,1
+9,5,Portable Bluetooth Speaker,Portable Bluetooth Speaker designed for everyday use with reliable quality.,12.74,1
+10,3,Sleek Coffee Mug,Sleek Coffee Mug designed for everyday use with reliable quality.,163.71,1
+11,5,Durable Fitness Band,Durable Fitness Band designed for everyday use with reliable quality.,153.7,1
+12,8,Lightweight Sunglasses,Lightweight Sunglasses designed for everyday use with reliable quality.,93.78,1
+13,8,Pro Keyboard,Pro Keyboard designed for everyday use with reliable quality.,108.71,1
+14,10,Essential Mouse,Essential Mouse designed for everyday use with reliable quality.,26.32,1
+15,2,Urban Power Bank,Urban Power Bank designed for everyday use with reliable quality.,33.48,1
+16,8,Wireless Travel Pillow,Wireless Travel Pillow designed for everyday use with reliable quality.,104.21,1
+17,1,Smart Wristwatch,Smart Wristwatch designed for everyday use with reliable quality.,47.05,1
+18,7,Eco Jacket,Eco Jacket designed for everyday use with reliable quality.,183.71,1
+19,10,Premium Tote Bag,Premium Tote Bag designed for everyday use with reliable quality.,95.12,1
+20,10,Compact Vacuum Bottle,Compact Vacuum Bottle designed for everyday use with reliable quality.,30.79,1
+21,8,Ultra Earbuds,Ultra Earbuds designed for everyday use with reliable quality.,154.03,1
+22,7,Modern Hoodie,Modern Hoodie designed for everyday use with reliable quality.,46.48,1
+23,10,Classic Backpack,Classic Backpack designed for everyday use with reliable quality.,19.48,1
+24,2,Portable Water Bottle,Portable Water Bottle designed for everyday use with reliable quality.,23.61,1
+25,1,Sleek Desk Lamp,Sleek Desk Lamp designed for everyday use with reliable quality.,36.63,1
+26,2,Durable Notebook,Durable Notebook designed for everyday use with reliable quality.,74.51,1
+27,9,Lightweight Running Shoes,Lightweight Running Shoes designed for everyday use with reliable quality.,23.59,1
+28,9,Pro Phone Case,Pro Phone Case designed for everyday use with reliable quality.,32.94,1
+29,4,Essential Bluetooth Speaker,Essential Bluetooth Speaker designed for everyday use with reliable quality.,186.55,1
+30,10,Urban Coffee Mug,Urban Coffee Mug designed for everyday use with reliable quality.,117.43,1
+31,9,Wireless Fitness Band,Wireless Fitness Band designed for everyday use with reliable quality.,168.73,1
+32,8,Smart Sunglasses,Smart Sunglasses designed for everyday use with reliable quality.,126.54,1
+33,4,Eco Keyboard,Eco Keyboard designed for everyday use with reliable quality.,68.28,1
+34,7,Premium Mouse,Premium Mouse designed for everyday use with reliable quality.,146.96,1
+35,6,Compact Power Bank,Compact Power Bank designed for everyday use with reliable quality.,106.93,1
+36,2,Ultra Travel Pillow,Ultra Travel Pillow designed for everyday use with reliable quality.,148.68,1
+37,10,Modern Wristwatch,Modern Wristwatch designed for everyday use with reliable quality.,37.25,1
+38,4,Classic Jacket,Classic Jacket designed for everyday use with reliable quality.,138.98,1
+39,5,Portable Tote Bag,Portable Tote Bag designed for everyday use with reliable quality.,88.23,1
+40,9,Sleek Vacuum Bottle,Sleek Vacuum Bottle designed for everyday use with reliable quality.,147.07,1
+41,2,Durable Earbuds,Durable Earbuds designed for everyday use with reliable quality.,152.49,1
+42,5,Lightweight Hoodie,Lightweight Hoodie designed for everyday use with reliable quality.,82.53,1
+43,1,Pro Backpack,Pro Backpack designed for everyday use with reliable quality.,185.41,1
+44,4,Essential Water Bottle,Essential Water Bottle designed for everyday use with reliable quality.,44.68,1
+45,10,Urban Desk Lamp,Urban Desk Lamp designed for everyday use with reliable quality.,6.56,1
+46,3,Wireless Notebook,Wireless Notebook designed for everyday use with reliable quality.,185.64,1
+47,1,Smart Running Shoes,Smart Running Shoes designed for everyday use with reliable quality.,62.43,1
+48,5,Eco Phone Case,Eco Phone Case designed for everyday use with reliable quality.,37.56,1
+49,10,Premium Bluetooth Speaker,Premium Bluetooth Speaker designed for everyday use with reliable quality.,9.7,1
+50,3,Compact Coffee Mug,Compact Coffee Mug designed for everyday use with reliable quality.,93.14,1
+51,8,Ultra Fitness Band,Ultra Fitness Band designed for everyday use with reliable quality.,162.63,1
+52,8,Modern Sunglasses,Modern Sunglasses designed for everyday use with reliable quality.,76.83,1
+53,10,Classic Keyboard,Classic Keyboard designed for everyday use with reliable quality.,123.8,1
+54,9,Portable Mouse,Portable Mouse designed for everyday use with reliable quality.,11.8,1
+55,7,Sleek Power Bank,Sleek Power Bank designed for everyday use with reliable quality.,74.14,1
+56,10,Durable Travel Pillow,Durable Travel Pillow designed for everyday use with reliable quality.,20.31,1
+57,4,Lightweight Wristwatch,Lightweight Wristwatch designed for everyday use with reliable quality.,140.17,1
+58,8,Pro Jacket,Pro Jacket designed for everyday use with reliable quality.,7.48,1
+59,8,Essential Tote Bag,Essential Tote Bag designed for everyday use with reliable quality.,94.61,1
+60,5,Urban Vacuum Bottle,Urban Vacuum Bottle designed for everyday use with reliable quality.,192.46,1
+61,6,Wireless Earbuds,Wireless Earbuds designed for everyday use with reliable quality.,70.17,1
+62,10,Smart Hoodie,Smart Hoodie designed for everyday use with reliable quality.,97.06,1
+63,4,Eco Backpack,Eco Backpack designed for everyday use with reliable quality.,25.55,1
+64,7,Premium Water Bottle,Premium Water Bottle designed for everyday use with reliable quality.,103.1,1
+65,9,Compact Desk Lamp,Compact Desk Lamp designed for everyday use with reliable quality.,177.71,1
+66,1,Ultra Notebook,Ultra Notebook designed for everyday use with reliable quality.,109.2,1
+67,3,Modern Running Shoes,Modern Running Shoes designed for everyday use with reliable quality.,59.89,1
+68,8,Classic Phone Case,Classic Phone Case designed for everyday use with reliable quality.,74.14,1
+69,8,Portable Bluetooth Speaker,Portable Bluetooth Speaker designed for everyday use with reliable quality.,179.77,1
+70,10,Sleek Coffee Mug,Sleek Coffee Mug designed for everyday use with reliable quality.,52.09,1
+71,8,Durable Fitness Band,Durable Fitness Band designed for everyday use with reliable quality.,9.66,1
+72,4,Lightweight Sunglasses,Lightweight Sunglasses designed for everyday use with reliable quality.,193.32,1
+73,1,Pro Keyboard,Pro Keyboard designed for everyday use with reliable quality.,88.84,1
+74,9,Essential Mouse,Essential Mouse designed for everyday use with reliable quality.,72.53,1
+75,8,Urban Power Bank,Urban Power Bank designed for everyday use with reliable quality.,117.53,1
+76,8,Wireless Travel Pillow,Wireless Travel Pillow designed for everyday use with reliable quality.,29.67,1
+77,2,Smart Wristwatch,Smart Wristwatch designed for everyday use with reliable quality.,190.26,1
+78,2,Eco Jacket,Eco Jacket designed for everyday use with reliable quality.,66.15,1
+79,4,Premium Tote Bag,Premium Tote Bag designed for everyday use with reliable quality.,190.8,1
+80,1,Compact Vacuum Bottle,Compact Vacuum Bottle designed for everyday use with reliable quality.,47.59,1
+81,9,Ultra Earbuds,Ultra Earbuds designed for everyday use with reliable quality.,53.5,1
+82,7,Modern Hoodie,Modern Hoodie designed for everyday use with reliable quality.,173.44,1
+83,5,Classic Backpack,Classic Backpack designed for everyday use with reliable quality.,50.88,1
+84,6,Portable Water Bottle,Portable Water Bottle designed for everyday use with reliable quality.,163.94,1
+85,7,Sleek Desk Lamp,Sleek Desk Lamp designed for everyday use with reliable quality.,111.06,1
+86,3,Durable Notebook,Durable Notebook designed for everyday use with reliable quality.,42.3,1
+87,6,Lightweight Running Shoes,Lightweight Running Shoes designed for everyday use with reliable quality.,119.82,1
+88,8,Pro Phone Case,Pro Phone Case designed for everyday use with reliable quality.,14.39,1
+89,9,Essential Bluetooth Speaker,Essential Bluetooth Speaker designed for everyday use with reliable quality.,8.1,1
+90,5,Urban Coffee Mug,Urban Coffee Mug designed for everyday use with reliable quality.,14.69,1
+91,5,Wireless Fitness Band,Wireless Fitness Band designed for everyday use with reliable quality.,82.89,1
+92,8,Smart Sunglasses,Smart Sunglasses designed for everyday use with reliable quality.,117.5,1
+93,8,Eco Keyboard,Eco Keyboard designed for everyday use with reliable quality.,174.17,1
+94,5,Premium Mouse,Premium Mouse designed for everyday use with reliable quality.,158.3,1
+95,10,Compact Power Bank,Compact Power Bank designed for everyday use with reliable quality.,54.67,1
+96,1,Ultra Travel Pillow,Ultra Travel Pillow designed for everyday use with reliable quality.,21.04,1
+97,3,Modern Wristwatch,Modern Wristwatch designed for everyday use with reliable quality.,35.76,1
+98,1,Classic Jacket,Classic Jacket designed for everyday use with reliable quality.,45.85,1
+99,8,Portable Tote Bag,Portable Tote Bag designed for everyday use with reliable quality.,86.39,1
+100,2,Sleek Vacuum Bottle,Sleek Vacuum Bottle designed for everyday use with reliable quality.,72.8,1
+101,8,Durable Earbuds,Durable Earbuds designed for everyday use with reliable quality.,141.48,1
+102,10,Lightweight Hoodie,Lightweight Hoodie designed for everyday use with reliable quality.,141.01,1
+103,9,Pro Backpack,Pro Backpack designed for everyday use with reliable quality.,19.57,1
+104,5,Essential Water Bottle,Essential Water Bottle designed for everyday use with reliable quality.,12.11,1
+105,1,Urban Desk Lamp,Urban Desk Lamp designed for everyday use with reliable quality.,158.93,1
+106,2,Wireless Notebook,Wireless Notebook designed for everyday use with reliable quality.,180.6,1
+107,10,Smart Running Shoes,Smart Running Shoes designed for everyday use with reliable quality.,5.91,1
+108,9,Eco Phone Case,Eco Phone Case designed for everyday use with reliable quality.,56.52,1
+109,3,Premium Bluetooth Speaker,Premium Bluetooth Speaker designed for everyday use with reliable quality.,96.14,1
+110,4,Compact Coffee Mug,Compact Coffee Mug designed for everyday use with reliable quality.,75.16,1
+111,2,Ultra Fitness Band,Ultra Fitness Band designed for everyday use with reliable quality.,51.84,1
+112,3,Modern Sunglasses,Modern Sunglasses designed for everyday use with reliable quality.,9.52,1
+113,8,Classic Keyboard,Classic Keyboard designed for everyday use with reliable quality.,108.68,1
+114,3,Portable Mouse,Portable Mouse designed for everyday use with reliable quality.,30.39,1
+115,7,Sleek Power Bank,Sleek Power Bank designed for everyday use with reliable quality.,114.48,1
+116,1,Durable Travel Pillow,Durable Travel Pillow designed for everyday use with reliable quality.,37.73,1
+117,10,Lightweight Wristwatch,Lightweight Wristwatch designed for everyday use with reliable quality.,87.11,1
+118,3,Pro Jacket,Pro Jacket designed for everyday use with reliable quality.,138.51,1
+119,7,Essential Tote Bag,Essential Tote Bag designed for everyday use with reliable quality.,58.41,1
+120,7,Urban Vacuum Bottle,Urban Vacuum Bottle designed for everyday use with reliable quality.,6.95,1
+121,3,Wireless Earbuds,Wireless Earbuds designed for everyday use with reliable quality.,47.87,1
+122,8,Smart Hoodie,Smart Hoodie designed for everyday use with reliable quality.,11.23,1
+123,8,Eco Backpack,Eco Backpack designed for everyday use with reliable quality.,187.3,1
+124,1,Premium Water Bottle,Premium Water Bottle designed for everyday use with reliable quality.,157.51,1
+125,7,Compact Desk Lamp,Compact Desk Lamp designed for everyday use with reliable quality.,105.93,1
+126,6,Ultra Notebook,Ultra Notebook designed for everyday use with reliable quality.,8.21,1
+127,2,Modern Running Shoes,Modern Running Shoes designed for everyday use with reliable quality.,63.27,1
+128,5,Classic Phone Case,Classic Phone Case designed for everyday use with reliable quality.,110.44,1
+129,7,Portable Bluetooth Speaker,Portable Bluetooth Speaker designed for everyday use with reliable quality.,172.68,1
+130,1,Sleek Coffee Mug,Sleek Coffee Mug designed for everyday use with reliable quality.,41.1,1
+131,7,Durable Fitness Band,Durable Fitness Band designed for everyday use with reliable quality.,21.29,1
+132,6,Lightweight Sunglasses,Lightweight Sunglasses designed for everyday use with reliable quality.,13.63,1
+133,2,Pro Keyboard,Pro Keyboard designed for everyday use with reliable quality.,91.54,1
+134,3,Essential Mouse,Essential Mouse designed for everyday use with reliable quality.,8.77,1
+135,2,Urban Power Bank,Urban Power Bank designed for everyday use with reliable quality.,18.07,1
+136,6,Wireless Travel Pillow,Wireless Travel Pillow designed for everyday use with reliable quality.,163.3,1
+137,5,Smart Wristwatch,Smart Wristwatch designed for everyday use with reliable quality.,129.08,1
+138,1,Eco Jacket,Eco Jacket designed for everyday use with reliable quality.,155.71,1
+139,8,Premium Tote Bag,Premium Tote Bag designed for everyday use with reliable quality.,142.61,1
+140,9,Compact Vacuum Bottle,Compact Vacuum Bottle designed for everyday use with reliable quality.,51.45,1
+141,10,Ultra Earbuds,Ultra Earbuds designed for everyday use with reliable quality.,13.66,1
+142,6,Modern Hoodie,Modern Hoodie designed for everyday use with reliable quality.,59.84,1
+143,8,Classic Backpack,Classic Backpack designed for everyday use with reliable quality.,173.69,1
+144,1,Portable Water Bottle,Portable Water Bottle designed for everyday use with reliable quality.,19.26,1
+145,10,Sleek Desk Lamp,Sleek Desk Lamp designed for everyday use with reliable quality.,133.76,1
+146,4,Durable Notebook,Durable Notebook designed for everyday use with reliable quality.,41.54,1
+147,10,Lightweight Running Shoes,Lightweight Running Shoes designed for everyday use with reliable quality.,106.85,1
+148,2,Pro Phone Case,Pro Phone Case designed for everyday use with reliable quality.,181.26,1
+149,5,Essential Bluetooth Speaker,Essential Bluetooth Speaker designed for everyday use with reliable quality.,97.65,1
+150,5,Urban Coffee Mug,Urban Coffee Mug designed for everyday use with reliable quality.,170.17,1
+151,7,Wireless Fitness Band,Wireless Fitness Band designed for everyday use with reliable quality.,168.56,1
+152,9,Smart Sunglasses,Smart Sunglasses designed for everyday use with reliable quality.,32.16,1
+153,9,Eco Keyboard,Eco Keyboard designed for everyday use with reliable quality.,110.36,1
+154,10,Premium Mouse,Premium Mouse designed for everyday use with reliable quality.,96.08,1
+155,3,Compact Power Bank,Compact Power Bank designed for everyday use with reliable quality.,47.64,1
+156,8,Ultra Travel Pillow,Ultra Travel Pillow designed for everyday use with reliable quality.,90.96,1
+157,6,Modern Wristwatch,Modern Wristwatch designed for everyday use with reliable quality.,98.65,1
+158,6,Classic Jacket,Classic Jacket designed for everyday use with reliable quality.,69.99,1
+159,5,Portable Tote Bag,Portable Tote Bag designed for everyday use with reliable quality.,6.74,1
+160,6,Sleek Vacuum Bottle,Sleek Vacuum Bottle designed for everyday use with reliable quality.,103.57,1
+161,9,Durable Earbuds,Durable Earbuds designed for everyday use with reliable quality.,136.26,1
+162,6,Lightweight Hoodie,Lightweight Hoodie designed for everyday use with reliable quality.,15.81,1
+163,9,Pro Backpack,Pro Backpack designed for everyday use with reliable quality.,35.73,1
+164,2,Essential Water Bottle,Essential Water Bottle designed for everyday use with reliable quality.,123.0,1
+165,2,Urban Desk Lamp,Urban Desk Lamp designed for everyday use with reliable quality.,67.25,1
+166,9,Wireless Notebook,Wireless Notebook designed for everyday use with reliable quality.,178.65,1
+167,8,Smart Running Shoes,Smart Running Shoes designed for everyday use with reliable quality.,159.12,1
+168,1,Eco Phone Case,Eco Phone Case designed for everyday use with reliable quality.,47.41,1
+169,4,Premium Bluetooth Speaker,Premium Bluetooth Speaker designed for everyday use with reliable quality.,44.04,1
+170,5,Compact Coffee Mug,Compact Coffee Mug designed for everyday use with reliable quality.,137.69,1
+171,3,Ultra Fitness Band,Ultra Fitness Band designed for everyday use with reliable quality.,35.46,1
+172,1,Modern Sunglasses,Modern Sunglasses designed for everyday use with reliable quality.,104.52,1
+173,4,Classic Keyboard,Classic Keyboard designed for everyday use with reliable quality.,197.67,1
+174,6,Portable Mouse,Portable Mouse designed for everyday use with reliable quality.,33.21,1
+175,2,Sleek Power Bank,Sleek Power Bank designed for everyday use with reliable quality.,14.42,1
+176,3,Durable Travel Pillow,Durable Travel Pillow designed for everyday use with reliable quality.,180.32,1
+177,5,Lightweight Wristwatch,Lightweight Wristwatch designed for everyday use with reliable quality.,144.49,1
+178,4,Pro Jacket,Pro Jacket designed for everyday use with reliable quality.,65.51,1
+179,1,Essential Tote Bag,Essential Tote Bag designed for everyday use with reliable quality.,81.62,1
+180,7,Urban Vacuum Bottle,Urban Vacuum Bottle designed for everyday use with reliable quality.,20.75,1
+181,1,Wireless Earbuds,Wireless Earbuds designed for everyday use with reliable quality.,73.66,1
+182,8,Smart Hoodie,Smart Hoodie designed for everyday use with reliable quality.,5.2,1
+183,3,Eco Backpack,Eco Backpack designed for everyday use with reliable quality.,126.8,1
+184,9,Premium Water Bottle,Premium Water Bottle designed for everyday use with reliable quality.,44.05,1
+185,4,Compact Desk Lamp,Compact Desk Lamp designed for everyday use with reliable quality.,126.9,1
+186,1,Ultra Notebook,Ultra Notebook designed for everyday use with reliable quality.,67.68,1
+187,9,Modern Running Shoes,Modern Running Shoes designed for everyday use with reliable quality.,14.23,1
+188,5,Classic Phone Case,Classic Phone Case designed for everyday use with reliable quality.,146.06,1
+189,3,Portable Bluetooth Speaker,Portable Bluetooth Speaker designed for everyday use with reliable quality.,153.05,1
+190,10,Sleek Coffee Mug,Sleek Coffee Mug designed for everyday use with reliable quality.,84.23,1
+191,1,Durable Fitness Band,Durable Fitness Band designed for everyday use with reliable quality.,142.35,1
+192,4,Lightweight Sunglasses,Lightweight Sunglasses designed for everyday use with reliable quality.,119.15,1
+193,9,Pro Keyboard,Pro Keyboard designed for everyday use with reliable quality.,194.07,1
+194,2,Essential Mouse,Essential Mouse designed for everyday use with reliable quality.,64.26,1
+195,5,Urban Power Bank,Urban Power Bank designed for everyday use with reliable quality.,66.18,1
+196,4,Wireless Travel Pillow,Wireless Travel Pillow designed for everyday use with reliable quality.,49.16,1
+197,4,Smart Wristwatch,Smart Wristwatch designed for everyday use with reliable quality.,136.11,1
+198,7,Eco Jacket,Eco Jacket designed for everyday use with reliable quality.,156.89,1
+199,8,Premium Tote Bag,Premium Tote Bag designed for everyday use with reliable quality.,104.97,1
+200,4,Compact Vacuum Bottle,Compact Vacuum Bottle designed for everyday use with reliable quality.,124.98,1
