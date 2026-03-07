@@ -43,6 +43,7 @@ public class ProductDAO {
         return null;
     }
 
+<<<<<<< HEAD
     public List<Product> findByShop(int shopId) throws Exception {
         String sql = "SELECT p.id, p.shop_id, s.name AS shop_name, s.rating AS shop_rating, p.name, p.description, p.base_price, p.active " +
                 "FROM products p LEFT JOIN shops s ON p.shop_id = s.id WHERE p.shop_id = ?";
@@ -57,6 +58,8 @@ public class ProductDAO {
         return list;
     }
 
+=======
+>>>>>>> 74c45db33ad1038a823f96d3912f1d93cb62d95d
     public int create(Product p) throws Exception {
         String sql = "INSERT INTO products(shop_id, name, description, base_price, active) VALUES(?,?,?,?,?)";
         try (Connection conn = DBUtil.getConnection();

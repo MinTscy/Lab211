@@ -26,7 +26,10 @@ CREATE TABLE IF NOT EXISTS products (
   shop_id INT NOT NULL DEFAULT 1,
   name VARCHAR(150) NOT NULL,
   description VARCHAR(255) NOT NULL,
+<<<<<<< HEAD
   image_url VARCHAR(255) NULL,
+=======
+>>>>>>> 74c45db33ad1038a823f96d3912f1d93cb62d95d
   base_price DECIMAL(10,2) NOT NULL,
   active TINYINT(1) NOT NULL DEFAULT 1,
   CONSTRAINT fk_product_shop FOREIGN KEY (shop_id) REFERENCES shops(id)

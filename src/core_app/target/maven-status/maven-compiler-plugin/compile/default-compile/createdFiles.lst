@@ -1,12 +1,19 @@
 com\lab211\ecommerce\servlet\CheckoutServlet.class
+<<<<<<< HEAD
 com\lab211\ecommerce\servlet\api\OrderApiServlet$ApiResponse.class
 com\lab211\ecommerce\dao\ProductDAO.class
 com\lab211\ecommerce\filter\AuthFilter.class
+=======
+com\lab211\ecommerce\dao\ProductDAO.class
+>>>>>>> 74c45db33ad1038a823f96d3912f1d93cb62d95d
 com\lab211\ecommerce\model\OrderItem.class
 com\lab211\ecommerce\model\ProductVariant.class
 com\lab211\ecommerce\servlet\ProductDetailServlet.class
 com\lab211\ecommerce\servlet\LoginServlet.class
+<<<<<<< HEAD
 com\lab211\ecommerce\service\OrderService.class
+=======
+>>>>>>> 74c45db33ad1038a823f96d3912f1d93cb62d95d
 com\lab211\ecommerce\util\DBUtil.class
 com\lab211\ecommerce\util\PasswordUtil.class
 com\lab211\ecommerce\servlet\CartServlet.class
@@ -14,6 +21,7 @@ com\lab211\ecommerce\dao\OrderDAO.class
 com\lab211\ecommerce\servlet\AdminProductServlet.class
 com\lab211\ecommerce\model\User.class
 com\lab211\ecommerce\dao\UserDAO.class
+<<<<<<< HEAD
 com\lab211\ecommerce\servlet\SellerDashboardServlet.class
 com\lab211\ecommerce\servlet\SellerRegisterServlet.class
 com\lab211\ecommerce\servlet\SellerProductServlet.class
@@ -25,11 +33,20 @@ com\lab211\ecommerce\servlet\LogoutServlet.class
 com\lab211\ecommerce\servlet\api\OrderApiServlet.class
 com\lab211\ecommerce\service\OrderService$VariantRequest.class
 com\lab211\ecommerce\servlet\api\OrderApiServlet$1.class
+=======
+com\lab211\ecommerce\dao\ShopDAO.class
+com\lab211\ecommerce\model\Product.class
+com\lab211\ecommerce\servlet\ProductListServlet.class
+com\lab211\ecommerce\servlet\LogoutServlet.class
+>>>>>>> 74c45db33ad1038a823f96d3912f1d93cb62d95d
 com\lab211\ecommerce\model\Order.class
 com\lab211\ecommerce\dao\VoucherDAO.class
 com\lab211\ecommerce\dao\VariantDAO.class
 com\lab211\ecommerce\model\CartItem.class
+<<<<<<< HEAD
 com\lab211\ecommerce\servlet\api\OrderApiServlet$OrderRequest.class
+=======
+>>>>>>> 74c45db33ad1038a823f96d3912f1d93cb62d95d
 com\lab211\ecommerce\servlet\HomeServlet.class
 com\lab211\ecommerce\model\Shop.class
 com\lab211\ecommerce\servlet\RegisterServlet.class

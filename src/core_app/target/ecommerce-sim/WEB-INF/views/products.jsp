@@ -49,10 +49,16 @@
            data-shop="${p.shopName}"
            data-rating="${p.shopRating}"
            data-price="${p.basePrice}"
+<<<<<<< HEAD
            data-image="${p.imageUrl}"
            data-variants='${variantJson}'>
         <div class="product-link quick-open">
           <div class="product-img" style="background-image:url('${p.imageUrl}');"></div>
+=======
+           data-variants='${variantJson}'>
+        <div class="product-link quick-open">
+          <div class="product-img"></div>
+>>>>>>> 74c45db33ad1038a823f96d3912f1d93cb62d95d
           <div class="card-badge">-15%</div>
         </div>
         <div class="product-card-top">
@@ -110,7 +116,10 @@
     const ovShop = document.getElementById('ov-shop');
     const ovPrice = document.getElementById('ov-price');
     const ovVariant = document.getElementById('ov-variant');
+<<<<<<< HEAD
     const ovImg = document.querySelector('.overlay-img');
+=======
+>>>>>>> 74c45db33ad1038a823f96d3912f1d93cb62d95d
 
     function openOverlay(card) {
       ovName.textContent = card.dataset.name;
@@ -126,9 +135,12 @@
           ovVariant.appendChild(opt);
         });
       } catch(e) {}
+<<<<<<< HEAD
       if (ovImg) {
         ovImg.style.backgroundImage = card.dataset.image ? `url('${card.dataset.image}')` : '';
       }
+=======
+>>>>>>> 74c45db33ad1038a823f96d3912f1d93cb62d95d
       overlay.classList.remove('hidden');
     }
 

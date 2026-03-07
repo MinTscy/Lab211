@@ -31,6 +31,7 @@ public class LoginServlet extends HttpServlet {
             if (user != null && user.getPasswordHash().equals(PasswordUtil.sha256(password))) {
                 HttpSession session = req.getSession(true);
                 session.setAttribute("user", user);
+<<<<<<< HEAD
                 String target = "/products";
                 if ("SELLER".equals(user.getRole())) {
                     target = "/seller/dashboard";
@@ -38,6 +39,9 @@ public class LoginServlet extends HttpServlet {
                     target = "/admin/products";
                 }
                 resp.sendRedirect(req.getContextPath() + target);
+=======
+                resp.sendRedirect(req.getContextPath() + "/products");
+>>>>>>> 74c45db33ad1038a823f96d3912f1d93cb62d95d
                 return;
             }
         } catch (Exception ex) {

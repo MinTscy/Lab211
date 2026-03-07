@@ -33,7 +33,11 @@ source data/schema.sql;
 source data/seed.sql;
 ```
 
+<<<<<<< HEAD
 Database name: `lab211_ecommerce`
+=======
+Database name: `Database`
+>>>>>>> 74c45db33ad1038a823f96d3912f1d93cb62d95d
 User: `root`
 Password: `1234`
 Host: `localhost`
@@ -56,5 +60,11 @@ Port: `3306`
 - Checkout with voucher
 - Admin product + variant management
 
+<<<<<<< HEAD
 
+=======
+## Notes
+- Update DB settings in `src/core_app/src/main/resources/db.properties` if needed.
+- Simulator (Project B) is not yet implemented.
+>>>>>>> 74c45db33ad1038a823f96d3912f1d93cb62d95d
 

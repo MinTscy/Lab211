@@ -41,14 +41,21 @@
       <artifactId>mysql-connector-j</artifactId>
       <version>8.3.0</version>
     </dependency>
+<<<<<<< HEAD
     <dependency>
       <groupId>com.google.code.gson</groupId>
       <artifactId>gson</artifactId>
       <version>2.10.1</version>
     </dependency>
+=======
+>>>>>>> 74c45db33ad1038a823f96d3912f1d93cb62d95d
   </dependencies>
 
   <build>
     <finalName>ecommerce-sim</finalName>
   </build>
 </project>
+<<<<<<< HEAD
+=======
+
+>>>>>>> 74c45db33ad1038a823f96d3912f1d93cb62d95d

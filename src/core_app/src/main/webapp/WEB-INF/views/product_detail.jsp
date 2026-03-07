@@ -8,7 +8,11 @@
     <div class="detail-grid">
       <div class="detail-media">
         <div class="detail-badge">FLASH SALE</div>
+<<<<<<< HEAD
         <div class="detail-img" style="background-image:url('${product.imageUrl}');"></div>
+=======
+        <div class="detail-img"></div>
+>>>>>>> 74c45db33ad1038a823f96d3912f1d93cb62d95d
       </div>
       <div class="detail-info">
         <h1>${product.name}</h1>
