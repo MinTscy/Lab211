@@ -1,0 +1,76 @@
+﻿CREATE DATABASE IF NOT EXISTS lab211_ecommerce CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci;
+USE lab211_ecommerce;
+
+
+CREATE TABLE IF NOT EXISTS users (
+  id INT PRIMARY KEY AUTO_INCREMENT,
+  name VARCHAR(100) NOT NULL,
+  email VARCHAR(150) NOT NULL UNIQUE,  
+  password_hash VARCHAR(64) NOT NULL,
+  role VARCHAR(20) NOT NULL,
+  created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+) ENGINE=InnoDB;
+
+CREATE TABLE IF NOT EXISTS shops (
+  id INT PRIMARY KEY AUTO_INCREMENT,
+  name VARCHAR(150) NOT NULL,
+  owner_user_id INT NOT NULL,
+  rating DECIMAL(3,2) NOT NULL DEFAULT 4.50,
+  active TINYINT(1) NOT NULL DEFAULT 1,
+  created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+  CONSTRAINT fk_shop_owner FOREIGN KEY (owner_user_id) REFERENCES users(id)
+) ENGINE=InnoDB;
+
+CREATE TABLE IF NOT EXISTS products (
+  id INT PRIMARY KEY AUTO_INCREMENT,
+  shop_id INT NOT NULL DEFAULT 1,
+  name VARCHAR(150) NOT NULL,
+  description VARCHAR(255) NOT NULL,
+  image_url VARCHAR(255) NULL,
+  base_price DECIMAL(10,2) NOT NULL,
+  active TINYINT(1) NOT NULL DEFAULT 1,
+  CONSTRAINT fk_product_shop FOREIGN KEY (shop_id) REFERENCES shops(id)
+) ENGINE=InnoDB;
+
+CREATE TABLE IF NOT EXISTS product_variants (
+  id INT PRIMARY KEY AUTO_INCREMENT,
+  product_id INT NOT NULL,
+  color VARCHAR(50) NOT NULL,
+  size VARCHAR(50) NOT NULL,
+  stock INT NOT NULL,
+  price_delta DECIMAL(10,2) NOT NULL DEFAULT 0,
+  CONSTRAINT fk_variant_product FOREIGN KEY (product_id) REFERENCES products(id)
+) ENGINE=InnoDB;
+
+CREATE TABLE IF NOT EXISTS vouchers (
+  id INT PRIMARY KEY AUTO_INCREMENT,
+  code VARCHAR(50) NOT NULL UNIQUE,
+  discount_type VARCHAR(20) NOT NULL,
+  discount_value DECIMAL(10,2) NOT NULL,
+  max_discount DECIMAL(10,2) NOT NULL DEFAULT 0,
+  min_order DECIMAL(10,2) NOT NULL DEFAULT 0,
+  start_at DATETIME NULL,
+  end_at DATETIME NULL,
+  active TINYINT(1) NOT NULL DEFAULT 1
+) ENGINE=InnoDB;
+
+CREATE TABLE IF NOT EXISTS orders (
+  id INT PRIMARY KEY AUTO_INCREMENT,
+  user_id INT NOT NULL,
+  total_amount DECIMAL(10,2) NOT NULL,
+  discount_amount DECIMAL(10,2) NOT NULL,
+  final_amount DECIMAL(10,2) NOT NULL,
+  status VARCHAR(20) NOT NULL,
+  created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+  CONSTRAINT fk_order_user FOREIGN KEY (user_id) REFERENCES users(id)
+) ENGINE=InnoDB;
+
+CREATE TABLE IF NOT EXISTS order_items (
+  id INT PRIMARY KEY AUTO_INCREMENT,
+  order_id INT NOT NULL,
+  variant_id INT NOT NULL,
+  quantity INT NOT NULL,
+  unit_price DECIMAL(10,2) NOT NULL,
+  CONSTRAINT fk_order_item_order FOREIGN KEY (order_id) REFERENCES orders(id),
+  CONSTRAINT fk_order_item_variant FOREIGN KEY (variant_id) REFERENCES product_variants(id)
+) ENGINE=InnoDB;
