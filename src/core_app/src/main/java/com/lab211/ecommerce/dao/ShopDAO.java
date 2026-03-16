@@ -6,10 +6,7 @@ import com.lab211.ecommerce.util.DBUtil;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
-<<<<<<< HEAD
 import java.sql.Statement;
-=======
->>>>>>> 74c45db33ad1038a823f96d3912f1d93cb62d95d
 import java.util.ArrayList;
 import java.util.List;
 
@@ -27,14 +24,15 @@ public class ShopDAO {
         return list;
     }
 
-<<<<<<< HEAD
     public Shop findByOwner(int ownerId) throws Exception {
         String sql = "SELECT id, name, owner_user_id, rating, active, created_at FROM shops WHERE owner_user_id = ? LIMIT 1";
         try (Connection conn = DBUtil.getConnection();
              PreparedStatement ps = conn.prepareStatement(sql)) {
             ps.setInt(1, ownerId);
             try (ResultSet rs = ps.executeQuery()) {
-                if (rs.next()) return map(rs);
+                if (rs.next()) {
+                    return map(rs);
+                }
             }
         }
         return null;
@@ -46,7 +44,9 @@ public class ShopDAO {
              PreparedStatement ps = conn.prepareStatement(sql)) {
             ps.setInt(1, id);
             try (ResultSet rs = ps.executeQuery()) {
-                if (rs.next()) return map(rs);
+                if (rs.next()) {
+                    return map(rs);
+                }
             }
         }
         return null;
@@ -62,14 +62,14 @@ public class ShopDAO {
             ps.setBoolean(4, s.isActive());
             ps.executeUpdate();
             try (ResultSet rs = ps.getGeneratedKeys()) {
-                if (rs.next()) return rs.getInt(1);
+                if (rs.next()) {
+                    return rs.getInt(1);
+                }
             }
         }
         return 0;
     }
 
-=======
->>>>>>> 74c45db33ad1038a823f96d3912f1d93cb62d95d
     private Shop map(ResultSet rs) throws Exception {
         Shop s = new Shop();
         s.setId(rs.getInt("id"));

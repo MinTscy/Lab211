@@ -31,22 +31,23 @@ public class LoginServlet extends HttpServlet {
             if (user != null && user.getPasswordHash().equals(PasswordUtil.sha256(password))) {
                 HttpSession session = req.getSession(true);
                 session.setAttribute("user", user);
-<<<<<<< HEAD
+
                 String target = "/products";
                 if ("SELLER".equals(user.getRole())) {
                     target = "/seller/dashboard";
                 } else if ("ADMIN".equals(user.getRole())) {
                     target = "/admin/products";
                 }
+
                 resp.sendRedirect(req.getContextPath() + target);
-=======
-                resp.sendRedirect(req.getContextPath() + "/products");
->>>>>>> 74c45db33ad1038a823f96d3912f1d93cb62d95d
                 return;
             }
         } catch (Exception ex) {
             req.setAttribute("error", "Login failed: " + ex.getMessage());
+            req.getRequestDispatcher("/WEB-INF/views/login.jsp").forward(req, resp);
+            return;
         }
+
         req.setAttribute("error", "Invalid email or password");
         req.getRequestDispatcher("/WEB-INF/views/login.jsp").forward(req, resp);
     }

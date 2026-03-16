@@ -23,14 +23,11 @@ public class CartServlet extends HttpServlet {
 
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-<<<<<<< HEAD
         Object flash = req.getSession(false) != null ? req.getSession(false).getAttribute("cartMessage") : null;
         if (flash instanceof String) {
             req.setAttribute("error", flash);
             req.getSession(false).removeAttribute("cartMessage");
         }
-=======
->>>>>>> 74c45db33ad1038a823f96d3912f1d93cb62d95d
         req.getRequestDispatcher("/WEB-INF/views/cart.jsp").forward(req, resp);
     }
 
@@ -42,79 +39,71 @@ public class CartServlet extends HttpServlet {
 
         HttpSession session = req.getSession(true);
         Map<Integer, CartItem> cart = getCart(session);
-<<<<<<< HEAD
         String message = null;
-=======
->>>>>>> 74c45db33ad1038a823f96d3912f1d93cb62d95d
 
         try {
             if ("add".equals(action)) {
                 ProductVariant variant = variantDAO.findById(variantId);
-<<<<<<< HEAD
-                if (variant == null) throw new IllegalArgumentException("Variant not found");
-                if (variant.getStock() <= 0) throw new IllegalArgumentException("Item is out of stock");
-                Product product = productDAO.findById(variant.getProductId());
-                if (product == null || !product.isActive()) throw new IllegalArgumentException("Product is inactive or missing");
-=======
                 if (variant == null) {
                     throw new IllegalArgumentException("Variant not found");
                 }
+                if (variant.getStock() <= 0) {
+                    throw new IllegalArgumentException("Item is out of stock");
+                }
+
                 Product product = productDAO.findById(variant.getProductId());
->>>>>>> 74c45db33ad1038a823f96d3912f1d93cb62d95d
+                if (product == null || !product.isActive()) {
+                    throw new IllegalArgumentException("Product is inactive or missing");
+                }
+
                 CartItem item = cart.getOrDefault(variantId, new CartItem());
                 item.setVariantId(variantId);
                 item.setProductId(variant.getProductId());
-                item.setProductName(product != null ? product.getName() : "Product");
+                item.setProductName(product.getName());
                 item.setColor(variant.getColor());
                 item.setSize(variant.getSize());
-                double price = (product != null ? product.getBasePrice() : 0) + variant.getPriceDelta();
+
+                double price = product.getBasePrice() + variant.getPriceDelta();
                 item.setUnitPrice(price);
-<<<<<<< HEAD
+
                 int requested = item.getQuantity() + Math.max(quantity, 1);
                 if (requested > variant.getStock()) {
                     requested = variant.getStock();
                     message = "Quantity capped to available stock.";
                 }
                 item.setQuantity(requested);
-=======
-                item.setQuantity(item.getQuantity() + Math.max(quantity, 1));
->>>>>>> 74c45db33ad1038a823f96d3912f1d93cb62d95d
                 cart.put(variantId, item);
+
             } else if ("update".equals(action)) {
                 CartItem item = cart.get(variantId);
                 if (item != null) {
                     if (quantity <= 0) {
                         cart.remove(variantId);
                     } else {
-<<<<<<< HEAD
                         ProductVariant variant = variantDAO.findById(variantId);
-                        if (variant == null) throw new IllegalArgumentException("Variant not found");
+                        if (variant == null) {
+                            throw new IllegalArgumentException("Variant not found");
+                        }
+
                         int capped = Math.min(quantity, variant.getStock());
                         if (capped < quantity) {
                             message = "Quantity capped to available stock.";
                         }
                         item.setQuantity(capped);
-=======
-                        item.setQuantity(quantity);
->>>>>>> 74c45db33ad1038a823f96d3912f1d93cb62d95d
                     }
                 }
+
             } else if ("remove".equals(action)) {
                 cart.remove(variantId);
             }
         } catch (Exception ex) {
-<<<<<<< HEAD
             message = "Cart update failed: " + ex.getMessage();
         }
 
         if (message != null) {
             session.setAttribute("cartMessage", message);
         }
-=======
-            req.setAttribute("error", "Cart update failed: " + ex.getMessage());
-        }
 
->>>>>>> 74c45db33ad1038a823f96d3912f1d93cb62d95d
         resp.sendRedirect(req.getContextPath() + "/cart");
     }
 

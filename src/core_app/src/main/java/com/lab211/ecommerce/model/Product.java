@@ -7,32 +7,34 @@ public class Product {
     private double shopRating;
     private String name;
     private String description;
-<<<<<<< HEAD
     private String imageUrl;
-=======
->>>>>>> 74c45db33ad1038a823f96d3912f1d93cb62d95d
     private double basePrice;
     private boolean active;
 
     public int getId() { return id; }
     public void setId(int id) { this.id = id; }
+
     public int getShopId() { return shopId; }
     public void setShopId(int shopId) { this.shopId = shopId; }
+
     public String getShopName() { return shopName; }
     public void setShopName(String shopName) { this.shopName = shopName; }
+
     public double getShopRating() { return shopRating; }
     public void setShopRating(double shopRating) { this.shopRating = shopRating; }
+
     public String getName() { return name; }
     public void setName(String name) { this.name = name; }
+
     public String getDescription() { return description; }
     public void setDescription(String description) { this.description = description; }
-<<<<<<< HEAD
+
     public String getImageUrl() { return imageUrl; }
     public void setImageUrl(String imageUrl) { this.imageUrl = imageUrl; }
-=======
->>>>>>> 74c45db33ad1038a823f96d3912f1d93cb62d95d
+
     public double getBasePrice() { return basePrice; }
     public void setBasePrice(double basePrice) { this.basePrice = basePrice; }
+
     public boolean isActive() { return active; }
     public void setActive(boolean active) { this.active = active; }
 }
