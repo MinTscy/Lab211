@@ -1,4 +1,4 @@
-﻿<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -12,12 +12,13 @@
       <div class="brand badge">ShopZone</div>
       <form class="search-bar" method="get" action="${pageContext.request.contextPath}/products">
         <input type="text" name="q" placeholder="Search products, categories..." value="${param.q}">
-        <button type="submit" class="search-icon">🔍</button>
+        <button type="submit" class="search-icon">Search</button>
       </form>
       <div class="nav-actions">
-        <a href="${pageContext.request.contextPath}/cart" class="icon-btn">🛒</a>
+        <a href="${pageContext.request.contextPath}/cart" class="icon-btn">Cart</a>
         <c:if test="${sessionScope.user != null}">
           <span class="user">Hi, ${sessionScope.user.name}</span>
+          <a href="${pageContext.request.contextPath}/profile" class="ghost">Profile</a>
           <a href="${pageContext.request.contextPath}/logout" class="ghost">Logout</a>
         </c:if>
         <c:if test="${sessionScope.user == null}">
@@ -35,15 +36,15 @@
       <a href="${pageContext.request.contextPath}/products?q=accessory">Accessories</a>
       <a href="${pageContext.request.contextPath}/products?q=home">Home</a>
       <a href="${pageContext.request.contextPath}/products?q=sports">Sports</a>
-<<<<<<< HEAD
       <c:if test="${sessionScope.user != null && sessionScope.user.role == 'SELLER'}">
         <a href="${pageContext.request.contextPath}/seller/dashboard">Seller</a>
       </c:if>
-=======
->>>>>>> 74c45db33ad1038a823f96d3912f1d93cb62d95d
       <c:if test="${sessionScope.user != null && sessionScope.user.role == 'ADMIN'}">
         <a href="${pageContext.request.contextPath}/admin/products">Admin</a>
+        <a href="${pageContext.request.contextPath}/admin/vouchers">Vouchers</a>
       </c:if>
     </nav>
   </header>
   <main class="container">
+
+
