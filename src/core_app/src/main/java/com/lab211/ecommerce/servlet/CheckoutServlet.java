@@ -23,6 +23,13 @@ public class CheckoutServlet extends HttpServlet {
 
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+        HttpSession session = req.getSession(false);
+        Object u = session != null ? session.getAttribute("user") : null;
+        if (!(u instanceof User)) {
+            resp.sendRedirect(req.getContextPath() + "/login");
+            return;
+        }
+        populateSummary(req, session, (User) u, req.getParameter("voucher"));
         req.getRequestDispatcher("/WEB-INF/views/checkout.jsp").forward(req, resp);
     }
 
@@ -45,6 +52,7 @@ public class CheckoutServlet extends HttpServlet {
 
         try {
             User user = (User) u;
+
             List<VariantRequest> requests = new ArrayList<>();
             for (CartItem item : cart.values()) {
                 VariantRequest vr = new VariantRequest();
@@ -53,16 +61,67 @@ public class CheckoutServlet extends HttpServlet {
                 requests.add(vr);
             }
 
+
+            List<VariantRequest> requests = toRequests(cart);
+
             int orderId = orderService.placeOrder(user, voucherCode, requests);
             cart.clear();
             req.setAttribute("success", "Order placed successfully. Order ID: " + orderId);
+            req.setAttribute("voucherCode", "");
+            populateEmptySummary(req);
         } catch (IllegalArgumentException ex) {
             req.setAttribute("error", ex.getMessage());
+
+
+            populateSummary(req, session, (User) u, voucherCode);
+
         } catch (Exception ex) {
             req.setAttribute("error", "Checkout failed: " + ex.getMessage());
+            populateSummary(req, session, (User) u, voucherCode);
         }
 
         req.getRequestDispatcher("/WEB-INF/views/checkout.jsp").forward(req, resp);
+    }
+
+    private void populateSummary(HttpServletRequest req, HttpSession session, User user, String voucherCode) {
+        Map<Integer, CartItem> cart = getCart(session);
+        req.setAttribute("voucherCode", voucherCode != null ? voucherCode.trim() : "");
+        if (cart.isEmpty()) {
+            populateEmptySummary(req);
+            return;
+        }
+        try {
+            OrderService.OrderSummary summary = orderService.previewOrder(user, voucherCode, toRequests(cart));
+            req.setAttribute("summary", summary);
+        } catch (Exception ex) {
+            req.setAttribute("summaryError", ex.getMessage());
+            try {
+                req.setAttribute("summary", orderService.previewOrder(user, null, toRequests(cart)));
+            } catch (Exception ignored) {
+                req.setAttribute("summary", null);
+            }
+        }
+    }
+
+    private void populateEmptySummary(HttpServletRequest req) {
+        OrderService.OrderSummary summary = new OrderService.OrderSummary();
+        summary.setItems(new ArrayList<CartItem>());
+        summary.setTotal(0);
+        summary.setDiscount(0);
+        summary.setFinalAmount(0);
+        summary.setEligibleSubtotal(0);
+        req.setAttribute("summary", summary);
+    }
+
+    private List<VariantRequest> toRequests(Map<Integer, CartItem> cart) {
+        List<VariantRequest> requests = new ArrayList<>();
+        for (CartItem item : cart.values()) {
+            VariantRequest vr = new VariantRequest();
+            vr.variantId = item.getVariantId();
+            vr.quantity = item.getQuantity();
+            requests.add(vr);
+        }
+        return requests;
     }
 
     @SuppressWarnings("unchecked")
@@ -75,4 +134,9 @@ public class CheckoutServlet extends HttpServlet {
         session.setAttribute("cart", cart);
         return cart;
     }
+
 }
+
+}
+
+

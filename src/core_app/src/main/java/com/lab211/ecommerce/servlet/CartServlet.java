@@ -5,6 +5,9 @@ import com.lab211.ecommerce.dao.VariantDAO;
 import com.lab211.ecommerce.model.CartItem;
 import com.lab211.ecommerce.model.Product;
 import com.lab211.ecommerce.model.ProductVariant;
+import com.lab211.ecommerce.model.User;
+import com.lab211.ecommerce.service.OrderService;
+import com.lab211.ecommerce.service.OrderService.VariantRequest;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -13,20 +16,36 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 import java.io.IOException;
+import java.util.ArrayList;
 import java.util.LinkedHashMap;
+import java.util.List;
 import java.util.Map;
 
 @WebServlet(name = "CartServlet", urlPatterns = {"/cart"})
 public class CartServlet extends HttpServlet {
     private final VariantDAO variantDAO = new VariantDAO();
     private final ProductDAO productDAO = new ProductDAO();
+    private final OrderService orderService = new OrderService();
 
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+
         Object flash = req.getSession(false) != null ? req.getSession(false).getAttribute("cartMessage") : null;
+
+        HttpSession session = req.getSession(false);
+        Object flash = session != null ? session.getAttribute("cartMessage") : null;
         if (flash instanceof String) {
             req.setAttribute("error", flash);
-            req.getSession(false).removeAttribute("cartMessage");
+            session.removeAttribute("cartMessage");
+        }
+
+        if (session != null) {
+            Object voucherFlash = session.getAttribute("cartVoucherMessage");
+            if (voucherFlash instanceof String) {
+                req.setAttribute("voucherMessage", voucherFlash);
+                session.removeAttribute("cartVoucherMessage");
+            }
+            populateCartSummary(req, session);
         }
         req.getRequestDispatcher("/WEB-INF/views/cart.jsp").forward(req, resp);
     }
@@ -44,6 +63,7 @@ public class CartServlet extends HttpServlet {
         try {
             if ("add".equals(action)) {
                 ProductVariant variant = variantDAO.findById(variantId);
+
                 if (variant == null) {
                     throw new IllegalArgumentException("Variant not found");
                 }
@@ -56,6 +76,12 @@ public class CartServlet extends HttpServlet {
                     throw new IllegalArgumentException("Product is inactive or missing");
                 }
 
+
+                if (variant == null) throw new IllegalArgumentException("Variant not found");
+                if (variant.getStock() <= 0) throw new IllegalArgumentException("Item is out of stock");
+                Product product = productDAO.findById(variant.getProductId());
+                if (product == null || !product.isActive()) throw new IllegalArgumentException("Product is inactive or missing");
+
                 CartItem item = cart.getOrDefault(variantId, new CartItem());
                 item.setVariantId(variantId);
                 item.setProductId(variant.getProductId());
@@ -65,7 +91,6 @@ public class CartServlet extends HttpServlet {
 
                 double price = product.getBasePrice() + variant.getPriceDelta();
                 item.setUnitPrice(price);
-
                 int requested = item.getQuantity() + Math.max(quantity, 1);
                 if (requested > variant.getStock()) {
                     requested = variant.getStock();
@@ -95,6 +120,21 @@ public class CartServlet extends HttpServlet {
 
             } else if ("remove".equals(action)) {
                 cart.remove(variantId);
+            } else if ("applyVoucher".equals(action)) {
+                String voucherCode = req.getParameter("voucher");
+                voucherCode = voucherCode == null ? "" : voucherCode.trim();
+                if (voucherCode.isEmpty()) {
+                    session.removeAttribute("cartVoucherCode");
+                    session.setAttribute("cartVoucherMessage", "Voucher has been cleared.");
+                } else {
+                    Object userObj = session.getAttribute("user");
+                    if (!(userObj instanceof User)) {
+                        throw new IllegalArgumentException("Please log in before applying a voucher.");
+                    }
+                    orderService.previewOrder((User) userObj, voucherCode, toRequests(cart));
+                    session.setAttribute("cartVoucherCode", voucherCode);
+                    session.setAttribute("cartVoucherMessage", "Voucher applied successfully.");
+                }
             }
         } catch (Exception ex) {
             message = "Cart update failed: " + ex.getMessage();
@@ -125,4 +165,47 @@ public class CartServlet extends HttpServlet {
             return 0;
         }
     }
+
 }
+
+
+    private void populateCartSummary(HttpServletRequest req, HttpSession session) {
+        Map<Integer, CartItem> cart = getCart(session);
+        req.setAttribute("cartVoucherCode", session.getAttribute("cartVoucherCode"));
+        if (cart.isEmpty()) {
+            session.removeAttribute("cartVoucherCode");
+            return;
+        }
+
+        double total = 0;
+        for (CartItem item : cart.values()) {
+            total += item.getUnitPrice() * item.getQuantity();
+        }
+        req.setAttribute("cartTotal", total);
+
+        Object userObj = session.getAttribute("user");
+        if (!(userObj instanceof User)) {
+            return;
+        }
+
+        String voucherCode = (String) session.getAttribute("cartVoucherCode");
+        try {
+            req.setAttribute("cartSummary", orderService.previewOrder((User) userObj, voucherCode, toRequests(cart)));
+        } catch (Exception ex) {
+            req.setAttribute("voucherError", ex.getMessage());
+        }
+    }
+
+    private List<VariantRequest> toRequests(Map<Integer, CartItem> cart) {
+        List<VariantRequest> requests = new ArrayList<>();
+        for (CartItem item : cart.values()) {
+            VariantRequest request = new VariantRequest();
+            request.variantId = item.getVariantId();
+            request.quantity = item.getQuantity();
+            requests.add(request);
+        }
+        return requests;
+    }
+}
+
+

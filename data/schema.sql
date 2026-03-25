@@ -7,6 +7,8 @@ CREATE TABLE IF NOT EXISTS users (
   name VARCHAR(100) NOT NULL,
   email VARCHAR(150) NOT NULL UNIQUE,  
   password_hash VARCHAR(64) NOT NULL,
+  phone VARCHAR(30) NULL,
+  address VARCHAR(255) NULL,
   role VARCHAR(20) NOT NULL,
   created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
 ) ENGINE=InnoDB;
@@ -26,10 +28,7 @@ CREATE TABLE IF NOT EXISTS products (
   shop_id INT NOT NULL DEFAULT 1,
   name VARCHAR(150) NOT NULL,
   description VARCHAR(255) NOT NULL,
-<<<<<<< HEAD
   image_url VARCHAR(255) NULL,
-=======
->>>>>>> 74c45db33ad1038a823f96d3912f1d93cb62d95d
   base_price DECIMAL(10,2) NOT NULL,
   active TINYINT(1) NOT NULL DEFAULT 1,
   CONSTRAINT fk_product_shop FOREIGN KEY (shop_id) REFERENCES shops(id)
@@ -48,13 +47,15 @@ CREATE TABLE IF NOT EXISTS product_variants (
 CREATE TABLE IF NOT EXISTS vouchers (
   id INT PRIMARY KEY AUTO_INCREMENT,
   code VARCHAR(50) NOT NULL UNIQUE,
+  product_id INT NULL,
   discount_type VARCHAR(20) NOT NULL,
   discount_value DECIMAL(10,2) NOT NULL,
   max_discount DECIMAL(10,2) NOT NULL DEFAULT 0,
   min_order DECIMAL(10,2) NOT NULL DEFAULT 0,
   start_at DATETIME NULL,
   end_at DATETIME NULL,
-  active TINYINT(1) NOT NULL DEFAULT 1
+  active TINYINT(1) NOT NULL DEFAULT 1,
+  CONSTRAINT fk_voucher_product FOREIGN KEY (product_id) REFERENCES products(id)
 ) ENGINE=InnoDB;
 
 CREATE TABLE IF NOT EXISTS orders (
@@ -76,4 +77,17 @@ CREATE TABLE IF NOT EXISTS order_items (
   unit_price DECIMAL(10,2) NOT NULL,
   CONSTRAINT fk_order_item_order FOREIGN KEY (order_id) REFERENCES orders(id),
   CONSTRAINT fk_order_item_variant FOREIGN KEY (variant_id) REFERENCES product_variants(id)
+) ENGINE=InnoDB;
+
+CREATE TABLE IF NOT EXISTS product_reviews (
+  id INT PRIMARY KEY AUTO_INCREMENT,
+  product_id INT NOT NULL,
+  user_id INT NOT NULL,
+  rating INT NOT NULL,
+  comment VARCHAR(500) NOT NULL,
+  created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+  updated_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
+  CONSTRAINT fk_review_product FOREIGN KEY (product_id) REFERENCES products(id),
+  CONSTRAINT fk_review_user FOREIGN KEY (user_id) REFERENCES users(id),
+  CONSTRAINT uq_review_user_product UNIQUE (product_id, user_id)
 ) ENGINE=InnoDB;

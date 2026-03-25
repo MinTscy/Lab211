@@ -1,0 +1,32 @@
+Access is denied.
+Mar 25, 2026 7:40:10 AM org.apache.coyote.AbstractProtocol init
+INFO: Initializing ProtocolHandler ["http-bio-8080"]
+Mar 25, 2026 7:40:10 AM org.apache.catalina.core.StandardService startInternal
+INFO: Starting service Tomcat
+Mar 25, 2026 7:40:10 AM org.apache.catalina.core.StandardEngine startInternal
+INFO: Starting Servlet Engine: Apache Tomcat/7.0.47
+Mar 25, 2026 7:40:11 AM org.apache.catalina.startup.ContextConfig processAnnotationsJar
+SEVERE: Unable to process Jar entry [module-info.class] from Jar [jar:file:/C:/Users/triet/lab211/.m2/repository/com/google/code/gson/gson/2.8.9/gson-2.8.9.jar!/] for annotations
+org.apache.tomcat.util.bcel.classfile.ClassFormatException: Invalid byte tag in constant pool: 19
+	at org.apache.tomcat.util.bcel.classfile.Constant.readConstant(Constant.java:133)
+	at org.apache.tomcat.util.bcel.classfile.ConstantPool.<init>(ConstantPool.java:60)
+	at org.apache.tomcat.util.bcel.classfile.ClassParser.readConstantPool(ClassParser.java:209)
+	at org.apache.tomcat.util.bcel.classfile.ClassParser.parse(ClassParser.java:119)
+	at org.apache.catalina.startup.ContextConfig.processAnnotationsStream(ContextConfig.java:2134)
+	at org.apache.catalina.startup.ContextConfig.processAnnotationsJar(ContextConfig.java:2010)
+	at org.apache.catalina.startup.ContextConfig.processAnnotationsUrl(ContextConfig.java:1976)
+	at org.apache.catalina.startup.ContextConfig.processAnnotations(ContextConfig.java:1961)
+	at org.apache.catalina.startup.ContextConfig.webConfig(ContextConfig.java:1319)
+	at org.apache.catalina.startup.ContextConfig.configureStart(ContextConfig.java:878)
+	at org.apache.catalina.startup.ContextConfig.lifecycleEvent(ContextConfig.java:376)
+	at org.apache.catalina.util.LifecycleSupport.fireLifecycleEvent(LifecycleSupport.java:119)
+	at org.apache.catalina.util.LifecycleBase.fireLifecycleEvent(LifecycleBase.java:90)
+	at org.apache.catalina.core.StandardContext.startInternal(StandardContext.java:5322)
+	at org.apache.catalina.util.LifecycleBase.start(LifecycleBase.java:150)
+	at org.apache.catalina.core.ContainerBase$StartChild.call(ContainerBase.java:1559)
+	at org.apache.catalina.core.ContainerBase$StartChild.call(ContainerBase.java:1549)
+	at java.base/java.util.concurrent.FutureTask.run(FutureTask.java:264)
+	at java.base/java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1136)
+	at java.base/java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:635)
+	at java.base/java.lang.Thread.run(Thread.java:842)
+

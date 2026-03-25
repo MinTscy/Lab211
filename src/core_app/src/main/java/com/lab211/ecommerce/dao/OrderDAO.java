@@ -7,6 +7,7 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.Statement;
+import java.util.ArrayList;
 import java.util.List;
 
 public class OrderDAO {
@@ -15,6 +16,9 @@ public class OrderDAO {
     public int createOrder(int userId, double total, double discount, double finalAmount, List<CartItem> items) throws Exception {
         String orderSql = "INSERT INTO orders(user_id, total_amount, discount_amount, final_amount, status) VALUES(?,?,?,?,?)";
         String itemSql = "INSERT INTO order_items(order_id, variant_id, quantity, unit_price) VALUES(?,?,?,?)";
+
+
+
 
         int attempts = 0;
         while (true) {
@@ -67,4 +71,42 @@ public class OrderDAO {
             }
         }
     }
+
 }
+
+
+    public boolean hasPurchasedProduct(int userId, int productId) throws Exception {
+        String sql = "SELECT 1 FROM orders o " +
+                "JOIN order_items oi ON o.id = oi.order_id " +
+                "JOIN product_variants pv ON oi.variant_id = pv.id " +
+                "WHERE o.user_id = ? AND pv.product_id = ? AND o.status IN ('PAID', 'SHIPPED', 'COMPLETED') LIMIT 1";
+        try (Connection conn = DBUtil.getConnection();
+             PreparedStatement ps = conn.prepareStatement(sql)) {
+            ps.setInt(1, userId);
+            ps.setInt(2, productId);
+            try (ResultSet rs = ps.executeQuery()) {
+                return rs.next();
+            }
+        }
+    }
+
+    public List<Integer> findPurchasedProductIds(int userId) throws Exception {
+        String sql = "SELECT DISTINCT pv.product_id FROM orders o " +
+                "JOIN order_items oi ON o.id = oi.order_id " +
+                "JOIN product_variants pv ON oi.variant_id = pv.id " +
+                "WHERE o.user_id = ? AND o.status IN ('PAID', 'SHIPPED', 'COMPLETED')";
+        List<Integer> ids = new ArrayList<>();
+        try (Connection conn = DBUtil.getConnection();
+             PreparedStatement ps = conn.prepareStatement(sql)) {
+            ps.setInt(1, userId);
+            try (ResultSet rs = ps.executeQuery()) {
+                while (rs.next()) {
+                    ids.add(rs.getInt(1));
+                }
+            }
+        }
+        return ids;
+    }
+}
+
+

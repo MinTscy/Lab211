@@ -1,4 +1,4 @@
-﻿<%@ include file="/WEB-INF/views/navbar.jspf" %>
+<%@ include file="/WEB-INF/views/navbar.jspf" %>
 <section class="hero hero-banner">
   <div class="hero-left">
     <h1>Super Sale Day</h1>
@@ -19,7 +19,7 @@
   <div class="flash-timer">
     <span>01</span><span>:</span><span>59</span><span>:</span><span>47</span>
   </div>
-  <a class="flash-link" href="${pageContext.request.contextPath}/products?q=flash">See all →</a>
+  <a class="flash-link" href="${pageContext.request.contextPath}/products?q=flash">See all -></a>
 </section>
 
 <section class="card">
@@ -40,7 +40,9 @@
   <div class="product-grid">
     <c:forEach var="p" items="${products}">
       <c:set var="variantJson" value="[" />
+      <c:set var="totalStock" value="${0}" />
       <c:forEach var="v" items="${variantsByProduct[p.id]}" varStatus="vs">
+        <c:set var="totalStock" value="${totalStock + v.stock}" />
         <c:set var="variantJson" value='${variantJson}{"id":${v.id},"label":"${v.color} / ${v.size}","delta":${v.priceDelta},"stock":${v.stock}}${vs.last ? "]" : ","}' />
       </c:forEach>
       <div class="product-card"
@@ -48,24 +50,18 @@
            data-name="${p.name}"
            data-shop="${p.shopName}"
            data-rating="${p.shopRating}"
-           data-price="${p.basePrice}"
-<<<<<<< HEAD
-           data-image="${p.imageUrl}"
-           data-variants='${variantJson}'>
-        <div class="product-link quick-open">
-          <div class="product-img" style="background-image:url('${p.imageUrl}');"></div>
-=======
+            data-price="${p.basePrice}"
            data-variants='${variantJson}'>
         <div class="product-link quick-open">
           <div class="product-img"></div>
->>>>>>> 74c45db33ad1038a823f96d3912f1d93cb62d95d
           <div class="card-badge">-15%</div>
         </div>
         <div class="product-card-top">
           <div>
             <h3>${p.name}</h3>
             <p class="muted">${p.shopName}</p>
-            <p class="rating">⭐ ${p.shopRating}</p>
+            <p class="rating">Rating: ${p.shopRating}</p>
+            <p class="stock-label">Stock: ${totalStock}</p>
           </div>
           <div class="price">Base ${p.basePrice}</div>
         </div>
@@ -80,7 +76,7 @@
 
 <div id="quick-overlay" class="overlay hidden">
   <div class="overlay-card">
-    <button type="button" class="close-btn" id="closeOverlay">×</button>
+    <button type="button" class="close-btn" id="closeOverlay">x</button>
     <div class="overlay-grid">
       <div class="overlay-img"></div>
       <div class="overlay-info">
@@ -116,14 +112,10 @@
     const ovShop = document.getElementById('ov-shop');
     const ovPrice = document.getElementById('ov-price');
     const ovVariant = document.getElementById('ov-variant');
-<<<<<<< HEAD
-    const ovImg = document.querySelector('.overlay-img');
-=======
->>>>>>> 74c45db33ad1038a823f96d3912f1d93cb62d95d
 
     function openOverlay(card) {
       ovName.textContent = card.dataset.name;
-      ovShop.textContent = card.dataset.shop + ' • ⭐ ' + card.dataset.rating;
+      ovShop.textContent = card.dataset.shop + ' | Rating: ' + card.dataset.rating;
       ovPrice.textContent = card.dataset.price;
       while (ovVariant.firstChild) ovVariant.removeChild(ovVariant.firstChild);
       try {
@@ -131,16 +123,10 @@
         variants.forEach(v => {
           const opt = document.createElement('option');
           opt.value = v.id;
-          opt.textContent = v.label + ' (+' + v.delta + ')';
+          opt.textContent = v.label + ' (+' + v.delta + ') - Stock: ' + v.stock;
           ovVariant.appendChild(opt);
         });
       } catch(e) {}
-<<<<<<< HEAD
-      if (ovImg) {
-        ovImg.style.backgroundImage = card.dataset.image ? `url('${card.dataset.image}')` : '';
-      }
-=======
->>>>>>> 74c45db33ad1038a823f96d3912f1d93cb62d95d
       overlay.classList.remove('hidden');
     }
 

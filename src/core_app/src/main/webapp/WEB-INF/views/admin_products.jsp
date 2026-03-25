@@ -1,4 +1,4 @@
-﻿<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ include file="/WEB-INF/views/navbar.jspf" %>
 <section class="card">
   <h1>Admin - Products</h1>
@@ -20,6 +20,9 @@
         <label>Description
           <input type="text" name="description" required>
         </label>
+        <label>Image URL
+          <input type="text" name="imageUrl" placeholder="https://...">
+        </label>
         <label>Base Price
           <input type="number" step="0.01" name="basePrice" required>
         </label>
@@ -37,6 +40,7 @@
             <input type="number" name="shopId" value="${p.shopId}" min="1" class="short">
             <input type="text" name="name" value="${p.name}">
             <input type="text" name="description" value="${p.description}">
+            <input type="text" name="imageUrl" value="${p.imageUrl}" placeholder="Image URL">
             <input type="number" step="0.01" name="basePrice" value="${p.basePrice}">
             <label class="check">
               <input type="checkbox" name="active" <c:if test="${p.active}">checked</c:if>> Active

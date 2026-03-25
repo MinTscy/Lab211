@@ -51,6 +51,7 @@ public class AdminProductServlet extends HttpServlet {
                 }
                 p.setName(req.getParameter("name"));
                 p.setDescription(req.getParameter("description"));
+                p.setImageUrl(req.getParameter("imageUrl"));
                 p.setBasePrice(parseDouble(req.getParameter("basePrice")));
                 p.setActive(true);
                 productDAO.create(p);
@@ -63,6 +64,7 @@ public class AdminProductServlet extends HttpServlet {
                     }
                     p.setName(req.getParameter("name"));
                     p.setDescription(req.getParameter("description"));
+                    p.setImageUrl(req.getParameter("imageUrl"));
                     p.setBasePrice(parseDouble(req.getParameter("basePrice")));
                     p.setActive("on".equals(req.getParameter("active")));
                     productDAO.update(p);

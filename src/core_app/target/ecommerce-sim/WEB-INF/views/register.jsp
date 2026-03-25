@@ -1,4 +1,4 @@
-﻿<%@ include file="/WEB-INF/views/navbar.jspf" %>
+<%@ include file="/WEB-INF/views/navbar.jspf" %>
 <section class="card">
   <h1>Register</h1>
   <c:if test="${not empty error}">
@@ -16,14 +16,12 @@
     </label>
     <button type="submit">Create Account</button>
   </form>
-<<<<<<< HEAD
   <div class="seller-cta">
     <span>Want to sell on Shoppe?</span>
     <a class="btn seller-btn" href="${pageContext.request.contextPath}/seller/register">Register as Seller</a>
   </div>
-=======
->>>>>>> 74c45db33ad1038a823f96d3912f1d93cb62d95d
 </section>
 </main>
 </body>
 </html>
+

@@ -53,6 +53,7 @@ public class SellerProductServlet extends HttpServlet {
             p.setShopId(shop.getId());
             p.setName(req.getParameter("name"));
             p.setDescription(req.getParameter("description"));
+            p.setImageUrl(req.getParameter("imageUrl"));
             p.setBasePrice(parseDouble(req.getParameter("basePrice")));
             p.setActive(true);
             int productId = productDAO.create(p);

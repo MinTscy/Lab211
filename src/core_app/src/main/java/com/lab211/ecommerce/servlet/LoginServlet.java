@@ -25,6 +25,8 @@ public class LoginServlet extends HttpServlet {
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         String email = req.getParameter("email");
         String password = req.getParameter("password");
+        email = email == null ? "" : email.trim();
+        password = password == null ? "" : password.trim();
 
         try {
             User user = userDAO.findByEmail(email);
@@ -42,13 +44,19 @@ public class LoginServlet extends HttpServlet {
                 resp.sendRedirect(req.getContextPath() + target);
                 return;
             }
+            req.setAttribute("error", "Invalid email or password");
         } catch (Exception ex) {
             req.setAttribute("error", "Login failed: " + ex.getMessage());
             req.getRequestDispatcher("/WEB-INF/views/login.jsp").forward(req, resp);
             return;
         }
 
+
         req.setAttribute("error", "Invalid email or password");
+        req.getRequestDispatcher("/WEB-INF/views/login.jsp").forward(req, resp);
+    }
+}
+=======
         req.getRequestDispatcher("/WEB-INF/views/login.jsp").forward(req, resp);
     }
 }
